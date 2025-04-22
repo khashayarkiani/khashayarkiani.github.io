@@ -1,715 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khashayar Kiani | Personal Website</title>
-    <style>
-        :root {
-            --primary: #3a86ff;
-            --secondary: #8338ec;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --accent: #00b4d8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, var(--dark), #0c0c1d);
-            color: var(--light);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(26, 26, 46, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo::before {
-            content: "";
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            margin-right: 10px;
-            border-radius: 50%;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(58, 134, 255, 0.1), transparent);
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-        }
-
-        .about-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .profile-img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .ai-border {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid var(--accent);
-            border-radius: 25px;
-            z-index: -1;
-        }
-
-        .ai-corner {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 2px solid var(--accent);
-        }
-
-        .top-left {
-            top: -5px;
-            left: -5px;
-            border-right: none;
-            border-bottom: none;
-            border-radius: 10px 0 0 0;
-        }
-
-        .top-right {
-            top: -5px;
-            right: -5px;
-            border-left: none;
-            border-bottom: none;
-            border-radius: 0 10px 0 0;
-        }
-
-        .bottom-left {
-            bottom: -5px;
-            left: -5px;
-            border-right: none;
-            border-top: none;
-            border-radius: 0 0 0 10px;
-        }
-
-        .bottom-right {
-            bottom: -5px;
-            right: -5px;
-            border-left: none;
-            border-top: none;
-            border-radius: 0 0 10px 0;
-        }
-
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .card {
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .card p {
-            margin-bottom: 10px;
-        }
-
-        .skills {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 100px 0;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-item {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .skill-item:last-child {
-            border-bottom: none;
-        }
-
-        .skill-item::before {
-            content: "▹";
-            color: var(--accent);
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-
-        .research-interests {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .interest-card {
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .interest-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-        }
-
-        .interest-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .interest-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .interest-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--light);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 15px;
-            padding: 20px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            background: rgba(58, 134, 255, 0.1);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
-
-        .contact-info-text {
-            flex: 1;
-        }
-
-        .contact-info-text h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .contact-info-text a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.1rem;
-        }
-
-        .contact-info-text a:hover {
-            color: var(--primary);
-        }
-
-        footer {
-            background: rgba(26, 26, 46, 0.9);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 10px;
-            transition: all 0.3s;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .social-icon:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .glowing-dots {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .profile-img {
-                margin-top: 30px;
-            }
-            
-            nav ul {
-                display: none;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khashayar Kiani - Personal Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1f2937;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #00ffe1;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+    h2 {
+      border-bottom: 2px solid #00ffe1;
+      padding-bottom: 0.5rem;
+      color: #00ffe1;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    .contact-icons a {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+      text-decoration: none;
+      color: #ffffff;
+      transition: color 0.3s;
+    }
+    .contact-icons a:hover {
+      color: #00ffe1;
+    }
+    .contact-icons i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="#" class="logo">Khashayar Kiani</a>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#research">Research</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <h1>Personal Website - Khashayar Kiani</h1>
+  </header>
 
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1 class="hero-title">Khashayar Kiani</h1>
-            <h2 class="hero-subtitle">Software Engineer & AI Enthusiast</h2>
-        </div>
-        <div class="particles" id="particles-js"></div>
-    </section>
+  <section>
+    <h2>About Me</h2>
+    <p>I received my BSc in Software Engineering from Islamic Azad University of Qazvin in 2018.</p>
+  </section>
 
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I received my Bachelor's degree in Software Engineering in 2018 from Islamic Azad University of Qazvin. My academic journey has equipped me with a strong foundation in software development principles and practices.</p>
-                    <p>I'm passionate about artificial intelligence, machine learning, and robotics, constantly exploring new technologies and methodologies in these fields.</p>
-                </div>
-                <div class="about-image">
-                    <img src="/api/placeholder/400/400" alt="Khashayar Kiani" class="profile-img">
-                    <div class="ai-border"></div>
-                    <div class="ai-corner top-left"></div>
-                    <div class="ai-corner top-right"></div>
-                    <div class="ai-corner bottom-left"></div>
-                    <div class="ai-corner bottom-right"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li>BSc in Software Engineering - Islamic Azad University of Qazvin - 2018</li>
+    </ul>
+  </section>
 
-    <section id="education" style="background: rgba(26, 26, 46, 0.3);">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Bachelor of Science in Software Engineering</h3>
-                    <p>Islamic Azad University of Qazvin</p>
-                    <p>Graduated: 2018</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section>
+    <h2>Research Interests</h2>
+    <ul>
+      <li>Artificial Intelligence</li>
+      <li>Machine Learning</li>
+      <li>Robotics</li>
+    </ul>
+  </section>
 
-    <section id="research">
-        <div class="container">
-            <h2 class="section-title">Research Interests</h2>
-            <div class="research-interests">
-                <div class="interest-card">
-                    <div class="interest-icon">🤖</div>
-                    <h3>Artificial Intelligence</h3>
-                    <p> - </p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">📊</div>
-                    <h3>Machine Learning</h3>
-                    <p> - </p>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">⚙️</div>
-                    <h3>Robotics</h3>
-                    <p> - </p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section>
+    <h2>Projects</h2>
+    <p>-</p>
+  </section>
 
-    <section id="experience" style="background: rgba(26, 26, 46, 0.3);">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3> Work Experience </h3>
-                    <p> Work experience at the Mechatronics Research Center of Qazvin Islamic Azad University in the Middle Size League of Robotics. </p>
-                    <p> - </p>
-                    <p> - </p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section>
+    <h2>Work Experience</h2>
+    <p>Experience in Mechatronics and Robotics Research Center of Islamic Azad University of Qazvin.</p>
+	<p> - </p>
+  </section>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="card-container">
-                <div class="card">
-                    <ul class="skill-list">
-                        <li class="skill-item">Python</li>
-                        <li class="skill-item">C#</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>Python</li>
+      <li>C#</li>
+    </ul>
+  </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </div>
-                    <div class="contact-info-text">
-                        <h4>LinkedIn</h4>
-                        <a href="https://linkedin.com/in/khashayar-kiani" target="_blank">linkedin.com/in/khashayar-kiani</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </div>
-                    <div class="contact-info-text">
-                        <h4>Email</h4>
-                        <a href="mailto:khashayar.kiani@example.com">khashayar.kiani@example.com</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </div>
-                    <div class="contact-info-text">
-                        <h4>GitHub</h4>
-                        <a href="https://github.com/khashayarkiani" target="_blank">github.com/khashayarkiani</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                        </svg>
-                    </div>
-                    <div class="contact-info-text">
-                        <h4>YouTube</h4>
-                        <a href="https://youtube.com/@khashayar-kiani" target="_blank">youtube.com/@khashayar-kiani</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container footer-content">
-            <p>© 2025 Khashayar Kiani. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/khashayar-kiani" class="social-icon" target="_blank">in</a>
-                <a href="https://github.com/khashayar-kiani" class="social-icon" target="_blank">gh</a>
-                <a href="mailto:khashayar.kiani@example.com" class="social-icon">@</a>
-                <a href="https://youtube.com/@khashayar-kiani" class="social-icon" target="_blank">yt</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Particle animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const particles = document.querySelector('.particles');
-            
-            // Create particles
-            for (let i = 0; i < 50; i++) {
-                createParticle(particles);
-            }
-            
-            // Smooth scrolling for navigation
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-        
-        function createParticle(container) {
-            const particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.width = Math.random() * 3 + 1 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.backgroundColor = 'rgba(255, 255, 255, ' + (Math.random() * 0.3 + 0.1) + ')';
-            particle.style.borderRadius = '50%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.boxShadow = '0 0 ' + (Math.random() * 10 + 5) + 'px rgba(58, 134, 255, 0.7)';
-            particle.style.animation = 'pulse ' + (Math.random() * 4 + 2) + 's infinite alternate';
-            
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes pulse {
-                    0% { transform: scale(1); opacity: ${Math.random() * 0.5 + 0.3}; }
-                    100% { transform: scale(${Math.random() * 0.5 + 1.5}); opacity: ${Math.random() * 0.3 + 0.1}; }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            container.appendChild(particle);
-        }
-    </script>
+  <section>
+    <h2>Contact Me</h2>
+    <div class="contact-icons">
+      <a href="https://www.linkedin.com/in/khashayar-kiani-1990sep16" target="_blank"><i class="fab fa-linkedin"></i>linkedin.com/in/khashayarkiani</a>
+      <a href="mailto:-"><i class="fas fa-envelope"></i> - </a>
+      <a href="https://github.com/khashayarkiani" target="_blank"><i class="fab fa-github"></i>github.com/khashayarkiani</a>
+      <a href="#" target="_blank"><i class="fab fa-youtube"></i>youtube.com/@khashayarkiani</a>
+    </div>
+  </section>
 </body>
 </html>
