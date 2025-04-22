@@ -290,37 +290,27 @@
             padding: 100px 0;
         }
 
+        .skill-list {
+            list-style: none;
+        }
+
         .skill-item {
-            margin-bottom: 30px;
-        }
-
-        .skill-name {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
+            align-items: center;
         }
 
-        .skill-bar {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
+        .skill-item:last-child {
+            border-bottom: none;
         }
 
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 5px;
-            position: relative;
-            animation: progress 1.5s ease-in-out forwards;
-        }
-
-        .python { width: 90%; }
-        .csharp { width: 80%; }
-
-        @keyframes progress {
-            from { width: 0; }
+        .skill-item::before {
+            content: "▹";
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.5rem;
         }
 
         .research-interests {
@@ -364,6 +354,60 @@
             font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--light);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(58, 134, 255, 0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .contact-info-text {
+            flex: 1;
+        }
+
+        .contact-info-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-info-text a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .contact-info-text a:hover {
+            color: var(--primary);
         }
 
         footer {
@@ -433,6 +477,10 @@
             nav ul {
                 display: none;
             }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -447,6 +495,7 @@
                     <li><a href="#research">Research</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -535,23 +584,65 @@
             <h2 class="section-title">Technical Skills</h2>
             <div class="card-container">
                 <div class="card">
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress python"></div>
-                        </div>
+                    <ul class="skill-list">
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">C#</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>C#</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress csharp"></div>
-                        </div>
+                    <div class="contact-info-text">
+                        <h4>LinkedIn</h4>
+                        <a href="https://linkedin.com/in/khashayar-kiani" target="_blank">linkedin.com/in/khashayar-kiani</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-info-text">
+                        <h4>Email</h4>
+                        <a href="mailto:khashayar.kiani@example.com">khashayar.kiani@example.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </div>
+                    <div class="contact-info-text">
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/khashayar-kiani" target="_blank">github.com/khashayar-kiani</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </div>
+                    <div class="contact-info-text">
+                        <h4>YouTube</h4>
+                        <a href="https://youtube.com/@khashayar-kiani" target="_blank">youtube.com/@khashayar-kiani</a>
                     </div>
                 </div>
             </div>
@@ -562,9 +653,10 @@
         <div class="container footer-content">
             <p>© 2025 Khashayar Kiani. All Rights Reserved.</p>
             <div class="social-links">
-                <a href="#" class="social-icon">in</a>
-                <a href="#" class="social-icon">gh</a>
-                <a href="#" class="social-icon">@</a>
+                <a href="https://linkedin.com/in/khashayar-kiani" class="social-icon" target="_blank">in</a>
+                <a href="https://github.com/khashayar-kiani" class="social-icon" target="_blank">gh</a>
+                <a href="mailto:khashayar.kiani@example.com" class="social-icon">@</a>
+                <a href="https://youtube.com/@khashayar-kiani" class="social-icon" target="_blank">yt</a>
             </div>
         </div>
     </footer>
