@@ -1,100 +1,623 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت شخصی من</title>
+    <title>Khashayar Kiani | Personal Website</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            background-color: #f4f4f4;
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #00b4d8;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark), #0c0c1d);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        nav {
-            background-color: #444;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
             overflow: hidden;
         }
 
-        nav a {
-            float: right;
-            display: block;
-            color: #fff;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(58, 134, 255, 0.1), transparent);
+            z-index: -1;
         }
 
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         section {
-            padding: 20px;
-            background-color: #fff;
-            margin: 20px;
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .ai-border {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--accent);
+            border-radius: 25px;
+            z-index: -1;
+        }
+
+        .ai-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .top-left {
+            top: -5px;
+            left: -5px;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 10px 0 0 0;
+        }
+
+        .top-right {
+            top: -5px;
+            right: -5px;
+            border-left: none;
+            border-bottom: none;
+            border-radius: 0 10px 0 0;
+        }
+
+        .bottom-left {
+            bottom: -5px;
+            left: -5px;
+            border-right: none;
+            border-top: none;
+            border-radius: 0 0 0 10px;
+        }
+
+        .bottom-right {
+            bottom: -5px;
+            right: -5px;
+            border-left: none;
+            border-top: none;
+            border-radius: 0 0 10px 0;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: rgba(26, 26, 46, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .card p {
+            margin-bottom: 10px;
+        }
+
+        .skills {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 100px 0;
+        }
+
+        .skill-item {
+            margin-bottom: 30px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
-        h2 {
-            color: #333;
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 5px;
+            position: relative;
+            animation: progress 1.5s ease-in-out forwards;
         }
 
-        .contact a {
-            color: #007bff;
+        .python { width: 90%; }
+        .csharp { width: 80%; }
+
+        @keyframes progress {
+            from { width: 0; }
+        }
+
+        .research-interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .interest-card {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .interest-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        footer {
+            background: rgba(26, 26, 46, 0.9);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            transition: all 0.3s;
+            color: var(--light);
             text-decoration: none;
+            font-size: 1.2rem;
         }
 
-        .contact a:hover {
-            text-decoration: underline;
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .glowing-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                margin-top: 30px;
+            }
+            
+            nav ul {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>سایت شخصی من</h1>
+        <div class="container header-content">
+            <a href="#" class="logo">Khashayar Kiani</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <a href="#education">تحصیلات</a>
-        <a href="#projects">پروژه‌ها</a>
-        <a href="#skills">مهارت‌ها</a>
-        <a href="#contact">ارتباط با من</a>
-    </nav>
-
-    <section id="education">
-        <h2>تحصیلات</h2>
-        <p>لیسانس نرم افزار</p>
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 class="hero-title">Khashayar Kiani</h1>
+            <h2 class="hero-subtitle">Software Engineer & AI Enthusiast</h2>
+        </div>
+        <div class="particles" id="particles-js"></div>
     </section>
 
-    <section id="projects">
-        <h2>پروژه‌ها</h2>
-        <p>پروژه‌ای ثبت نشده است.</p>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I received my Bachelor's degree in Software Engineering in 2018 from Islamic Azad University of Qazvin. My academic journey has equipped me with a strong foundation in software development principles and practices.</p>
+                    <p>I'm passionate about artificial intelligence, machine learning, and robotics, constantly exploring new technologies and methodologies in these fields.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/400/400" alt="Khashayar Kiani" class="profile-img">
+                    <div class="ai-border"></div>
+                    <div class="ai-corner top-left"></div>
+                    <div class="ai-corner top-right"></div>
+                    <div class="ai-corner bottom-left"></div>
+                    <div class="ai-corner bottom-right"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="skills">
-        <h2>مهارت‌ها</h2>
-        <ul>
-            <li>توسعه وب</li>
-        </ul>
+    <section id="education" style="background: rgba(26, 26, 46, 0.3);">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Bachelor of Science in Software Engineering</h3>
+                    <p>Islamic Azad University of Qazvin</p>
+                    <p>Graduated: 2018</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="contact">
-        <h2>ارتباط با من</h2>
-        <p>برای ارتباط با من می‌توانید به <a href="mailto:your-email@example.com">ایمیل</a> من پیام بفرستید.</p>
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title">Research Interests</h2>
+            <div class="research-interests">
+                <div class="interest-card">
+                    <div class="interest-icon">🤖</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Exploring the fundamentals and applications of AI systems, focusing on how intelligent algorithms can solve complex problems across various domains.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">📊</div>
+                    <h3>Machine Learning</h3>
+                    <p>Investigating various ML techniques and frameworks to develop systems that can learn from data and improve through experience without explicit programming.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">⚙️</div>
+                    <h3>Robotics</h3>
+                    <p>Working on robotic systems that can perceive, reason, and act upon their environment, with a focus on autonomous navigation and manipulation tasks.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <section id="experience" style="background: rgba(26, 26, 46, 0.3);">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Research Assistant</h3>
+                    <p>Mechatronics and Robotics Research Center</p>
+                    <p>Islamic Azad University of Qazvin</p>
+                    <p>Contributed to research projects focusing on robotic systems and automation technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress python"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>C#</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress csharp"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>© 2025 Khashayar Kiani. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">in</a>
+                <a href="#" class="social-icon">gh</a>
+                <a href="#" class="social-icon">@</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Particle animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const particles = document.querySelector('.particles');
+            
+            // Create particles
+            for (let i = 0; i < 50; i++) {
+                createParticle(particles);
+            }
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+        
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = Math.random() * 3 + 1 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.backgroundColor = 'rgba(255, 255, 255, ' + (Math.random() * 0.3 + 0.1) + ')';
+            particle.style.borderRadius = '50%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.boxShadow = '0 0 ' + (Math.random() * 10 + 5) + 'px rgba(58, 134, 255, 0.7)';
+            particle.style.animation = 'pulse ' + (Math.random() * 4 + 2) + 's infinite alternate';
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); opacity: ${Math.random() * 0.5 + 0.3}; }
+                    100% { transform: scale(${Math.random() * 0.5 + 1.5}); opacity: ${Math.random() * 0.3 + 0.1}; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            container.appendChild(particle);
+        }
+    </script>
 </body>
 </html>
