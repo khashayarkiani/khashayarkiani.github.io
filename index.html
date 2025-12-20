@@ -4,52 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Title shown in browser tab -->
-  <title>Khashayar Kiani - Personal Website</title>
+  <!-- Browser Title -->
+  <title>Khashayar Kiani | AI & Robotics</title>
 
-  <!-- Open Graph tags for WhatsApp preview -->
+  <!-- Open Graph (WhatsApp / Facebook) -->
   <meta property="og:title" content="🤖 Khashayar Kiani" />
   <meta property="og:description" content="Artificial Intelligence · Machine Learning · Robotics" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://example.com" />
-  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Dall-e_3_%28jan_%2724%29_artificial_intelligence_icon.png/250px-Dall-e_3_%28jan_%2724%29_artificial_intelligence_icon.png" />
+
+  <!-- Optimized large preview image for WhatsApp (1200x630) -->
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/6/64/Dall-e_3_%28jan_%2724%29_artificial_intelligence_icon.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card (helps some messengers) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🤖 Khashayar Kiani" />
+  <meta name="twitter:description" content="Artificial Intelligence · Machine Learning · Robotics" />
+  <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/6/64/Dall-e_3_%28jan_%2724%29_artificial_intelligence_icon.png" />
 
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      color: #ffffff;
     }
     header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
       background: #1f2937;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 0 12px rgba(0,0,0,0.6);
     }
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       color: #00ffe1;
+      margin: 0;
     }
     section {
-      max-width: 800px;
+      max-width: 900px;
       margin: 2rem auto;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(5px);
+      padding: 1.8rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      box-shadow: 0 4px 35px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(6px);
     }
     h2 {
       border-bottom: 2px solid #00ffe1;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.6rem;
       color: #00ffe1;
     }
+    ul { list-style: none; padding-left: 0; }
+    li { margin: 0.6rem 0; }
+    .contact-icons a {
+      display: flex;
+      align-items: center;
+      margin: 0.6rem 0;
+      text-decoration: none;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+    .contact-icons a:hover { color: #00ffe1; }
+    .contact-icons i { margin-right: 10px; font-size: 1.3rem; }
   </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+
   <header>
-    <h1>Personal Website - Khashayar Kiani</h1>
+    <h1>Personal Website – Khashayar Kiani</h1>
   </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I hold a Bachelor's degree in Software Engineering from Islamic Azad University of Qazvin (2018).</p>
+    <p>I have research experience in Artificial Intelligence and Robotics through academic projects.</p>
+    <p>Currently preparing for the Master's entrance exam in Artificial Intelligence.</p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li>BSc in Software Engineering – Islamic Azad University of Qazvin – 2018</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Research Interests</h2>
+    <ul>
+      <li>Artificial Intelligence</li>
+      <li>Machine Learning</li>
+      <li>Robotics</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Work Experience</h2>
+    <p>Mechatronics and Robotics Research Center – Islamic Azad University of Qazvin</p>
+    <p>Middle Size Robot League (MRL) – 2014 to 2018</p>
+    <p>Humanoid Robots (MRL) – 2014</p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>Python</li>
+      <li>C#</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact-icons">
+      <a href="https://www.linkedin.com/in/khashayar-kiani-1990sep16" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+      <a href="https://github.com/khashayarkiani" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+    </div>
+  </section>
+
 </body>
 </html>
